@@ -1,12 +1,38 @@
-import { FC } from 'react';
-import styles from './App.module.css';
+import "@mantine/core/styles.css";
+import styles from "./App.module.css";
 
-interface AppProps {}
+import { AppShell, Burger } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 
-const App: FC<AppProps> = () => (
-  <div className={styles.App} data-testid="App">
-    App Component
-  </div>
-);
+function App() {
+  const [opened, handlers] = useDisclosure();
+  return (
+    <AppShell
+      className={styles.App}
+      data-testid="App"
+      header={{ height: 60 }}
+      navbar={{
+        width: 300,
+        breakpoint: "sm",
+        collapsed: { mobile: !opened },
+      }}
+      padding="md"
+    >
+      <AppShell.Header>
+        <Burger
+          opened={opened}
+          onClick={handlers.toggle}
+          hiddenFrom="sm"
+          size="sm"
+        />
+        <div>Logo</div>
+      </AppShell.Header>
+
+      <AppShell.Navbar p="md">Navbar</AppShell.Navbar>
+
+      <AppShell.Main>Main</AppShell.Main>
+    </AppShell>
+  );
+}
 
 export default App;

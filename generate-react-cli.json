@@ -10,7 +10,10 @@
       "withStyle": true,
       "withTest": true,
       "withStory": false,
-      "withLazy": false
+      "withLazy": false,
+      "customTemplates": {
+        "test": "templates/default/TemplateName.test.tsx"
+      }
     }
   }
 }
