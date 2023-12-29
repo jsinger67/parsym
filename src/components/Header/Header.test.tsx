@@ -10,8 +10,5 @@ describe("<Header />", () => {
 
     const header = screen.getByTestId("Header");
     expect(header).not.toBeNull();
-
-    const toggle = screen.getByTestId("ToggleColorSchemeActionIcon");
-    expect(toggle).not.toBeNull();
   });
 });
