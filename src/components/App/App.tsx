@@ -1,16 +1,18 @@
 import "@mantine/core/styles.css";
-import styles from "./App.module.css";
+// import styles from "./App.module.css";
 
 import { AppShell, Burger } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import Header from "../Header/Header";
 
 function App() {
-  const [opened, handlers] = useDisclosure();
+  const [opened, handlers] = useDisclosure(true);
   return (
     <AppShell
-      className={styles.App}
+      // className={styles.App}
       data-testid="App"
       header={{ height: 60 }}
+      footer={{ height: 30 }}
       navbar={{
         width: 300,
         breakpoint: "sm",
@@ -25,12 +27,13 @@ function App() {
           hiddenFrom="sm"
           size="sm"
         />
-        <div>Logo</div>
+        <Header />
       </AppShell.Header>
 
       <AppShell.Navbar p="md">Navbar</AppShell.Navbar>
 
       <AppShell.Main>Main</AppShell.Main>
+      <AppShell.Footer>Footer</AppShell.Footer>
     </AppShell>
   );
 }
