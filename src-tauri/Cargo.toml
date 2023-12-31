@@ -1,9 +1,9 @@
 [package]
 name = "parsym"
-version = "0.0.0"
-description = "A Tauri App"
-authors = ["you"]
-license = ""
+version = "0.1.0"
+description = "Symbol viewer for Parol grammars"
+authors = ["Jörg Singer <singer.joerg@gmx.de>"]
+license = "MIT OR Apache-2.0"
 repository = ""
 edition = "2021"
 
@@ -16,6 +16,8 @@ tauri-build = { version = "1.5", features = [] }
 tauri = { version = "1.5", features = ["shell-open"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
+parol = { version = "0.25.0", path = "../../parol/crates/parol" }
+anyhow = "1.0.75"
 
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem
