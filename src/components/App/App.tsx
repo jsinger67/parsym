@@ -6,6 +6,13 @@ import { useDisclosure } from "@mantine/hooks";
 import Header from "../Header/Header";
 import { SymbolTable } from "../../symbol-table/SymbolTable";
 import { createContext, useState } from "react";
+import SymbolNavigation from "../SymbolNavigation/SymbolNavigation";
+import { Outlet } from "react-router-dom";
+
+export const SymbolTableContext = createContext({
+  symbols: [],
+  scopes: [],
+} as SymbolTable);
 
 function App() {
   const [opened, handlers] = useDisclosure(true);
@@ -19,7 +26,9 @@ function App() {
     scopes: [],
   } as SymbolTable);
 
-  const SymbolTableContext = createContext(symbolTable);
+  console.log(
+    `Number of symbols in Symbol Table: ${symbolTable.symbols.length}`
+  );
 
   return (
     <SymbolTableContext.Provider value={symbolTable}>
@@ -27,7 +36,7 @@ function App() {
         className={classes.App}
         data-testid="App"
         header={{ height: 60 }}
-        footer={{ height: 30 }}
+        footer={{ height: 60 }}
         navbar={{
           width: 300,
           breakpoint: "sm",
@@ -45,9 +54,13 @@ function App() {
           <Header setSymbolTable={setSymbolTable} />
         </AppShell.Header>
 
-        <AppShell.Navbar p="md">Navbar</AppShell.Navbar>
+        <AppShell.Navbar p="md">
+          <SymbolNavigation />
+        </AppShell.Navbar>
 
-        <AppShell.Main>{JSON.stringify(symbolTable)}</AppShell.Main>
+        <AppShell.Main>
+          <Outlet />
+        </AppShell.Main>
         <AppShell.Footer>Footer</AppShell.Footer>
       </AppShell>
     </SymbolTableContext.Provider>

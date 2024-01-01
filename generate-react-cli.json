@@ -7,12 +7,14 @@
   "component": {
     "default": {
       "path": "src/components",
+      "withComponent": true,
       "withStyle": true,
       "withTest": true,
       "withStory": false,
       "withLazy": false,
       "customTemplates": {
-        "test": "templates/default/TemplateName.test.tsx"
+        "test": "templates/default/TemplateName.test.tsx",
+        "component": "templates/default/TemplateName.tsx"
       }
     }
   }
