@@ -2,7 +2,7 @@ import classes from "./Header.module.css";
 import { invoke } from "@tauri-apps/api";
 import ColorSchemeToggle from "../ColorSchemeToggle/ColorSchemeToggle";
 import { Button, FileButton, Group, Text } from "@mantine/core";
-import { SymbolTable } from "../../symbol_table/SymbolTable";
+import { SymbolTable } from "../../symbol-table/SymbolTable";
 import { useEffect, useState } from "react";
 
 export interface HeaderProps {

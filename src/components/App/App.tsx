@@ -4,7 +4,7 @@ import classes from "./App.module.css";
 import { AppShell, Burger } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Header from "../Header/Header";
-import { SymbolTable } from "../../symbol_table/SymbolTable";
+import { SymbolTable } from "../../symbol-table/SymbolTable";
 import { createContext, useState } from "react";
 
 function App() {
