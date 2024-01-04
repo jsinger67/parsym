@@ -7,7 +7,7 @@ import Header from "../Header/Header";
 import { SymbolTable } from "../../symbol-table/SymbolTable";
 import { createContext, useState } from "react";
 import SymbolNavigation from "../SymbolNavigation/SymbolNavigation";
-import { Outlet } from "react-router-dom";
+import RouterSwitcher from "../RouterSwitcher/RouterSwitcher";
 
 export const SymbolTableContext = createContext({
   symbols: [],
@@ -59,7 +59,7 @@ function App() {
         </AppShell.Navbar>
 
         <AppShell.Main>
-          <Outlet />
+          <RouterSwitcher />
         </AppShell.Main>
         <AppShell.Footer>Footer</AppShell.Footer>
       </AppShell>

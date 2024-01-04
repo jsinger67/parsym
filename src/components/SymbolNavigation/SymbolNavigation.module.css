@@ -1,3 +1,8 @@
 .SymbolNavigation {
   overflow-y: scroll;
 }
+
+.NavLink {
+  display: block;
+  margin: 0;
+}
