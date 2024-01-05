@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { SymbolTableContext } from "../App/App";
 import { Text, Space } from "@mantine/core";
 import { useParams } from "react-router-dom";
+import SymbolLink from "../SymbolLink/SymbolLink";
 
 const getScopeByID = (scope_id: ScopeId, symbolTable: SymbolTable): Scope => {
   const scope = symbolTable.scopes.find((scope) => scope.my_id === scope_id)!;
@@ -25,7 +26,7 @@ function SymbolDetails() {
   const symbolId = (() => {
     const { symbolId } = useParams<{ symbolId: string }>();
     if (!symbolId) {
-      throw new Error("Symbol ID not found in URL");
+      return 0;
     }
     return parseInt(symbolId);
   })();
@@ -34,7 +35,7 @@ function SymbolDetails() {
   console.log(`Symbol Table: ${symbolTable.symbols.length}`);
   const symbol = symbolTable.symbols[symbolId];
   if (!symbol) {
-    return <></>;
+    return <div data-testid="SymbolDetails"></div>;
   }
   const name = getSymbolName(symbol, symbolTable);
 
@@ -45,7 +46,7 @@ function SymbolDetails() {
       </Text>
       <Space h="md" />
       <Text>
-        {symbol.my_id} {name}
+        <SymbolLink symbolId={symbolId} /> {name}
       </Text>
     </div>
   );

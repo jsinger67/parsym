@@ -2,19 +2,19 @@ import { BrowserRouter } from "react-router-dom";
 import setupTests from "../../setupTests";
 import { render, screen } from "../../test-utils";
 
-import SymbolNavigation from "./SymbolNavigation";
+import ScopeLink from "./ScopeLink";
 
-describe("<SymbolNavigation />", () => {
+describe("<ScopeLink />", () => {
   beforeAll(() => setupTests());
   test("it should mount", () => {
     render(
       <BrowserRouter>
-        <SymbolNavigation />
+        <ScopeLink scopeId={0} />
       </BrowserRouter>
     );
 
-    const symbolNavigation = screen.getByTestId("SymbolNavigation");
+    const scopeLink = screen.getByTestId("ScopeLink");
 
-    expect(symbolNavigation).not.toBeNull();
+    expect(scopeLink).not.toBeNull();
   });
 });
