@@ -6,8 +6,8 @@ import Header from "../Header/Header";
 import { SymbolTable } from "../../symbol-table/SymbolTable";
 import { createContext, useState } from "react";
 import DetailsRoutes from "../DetailsRoutes/DetailsRoutes";
-import TabSwitcher from "../TabSwitcher/TabSwitcher";
 import Footer from "../Footer/Footer";
+import TabSwitcher from "../TabSwitcher/TabSwitcher";
 
 export const SymbolTableContext = createContext({
   symbols: [],

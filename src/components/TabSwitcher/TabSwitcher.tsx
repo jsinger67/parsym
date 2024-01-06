@@ -12,24 +12,27 @@ function TabSwitcher(_props: TabSwitcherProps) {
   const { tabValue } = useParams();
 
   return (
-    <div className={classes.TabSwitcher} data-testid="TabSwitcher">
-      <Tabs value={tabValue} onChange={(value) => navigate(`/tabs/${value}`)}>
-        <Tabs.List>
-          <Tabs.Tab value="symbols" leftSection={<IconCircleDot size={24} />}>
-            Symbol
-          </Tabs.Tab>
-          <Tabs.Tab value="scopes" leftSection={<IconCircle size={24} />}>
-            Scopes
-          </Tabs.Tab>
-        </Tabs.List>
-        <Tabs.Panel value="symbols">
-          <SymbolNavigation />
-        </Tabs.Panel>
-        <Tabs.Panel value="scopes">
-          <ScopeNavigation />
-        </Tabs.Panel>
-      </Tabs>
-    </div>
+    <Tabs
+      className={classes.TabSwitcher}
+      data-testid="TabSwitcher"
+      value={tabValue}
+      onChange={(value) => navigate(`/tabs/${value}`)}
+    >
+      <Tabs.List>
+        <Tabs.Tab value="symbols" leftSection={<IconCircleDot size={16} />}>
+          Symbols
+        </Tabs.Tab>
+        <Tabs.Tab value="scopes" leftSection={<IconCircle size={16} />}>
+          Scopes
+        </Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Panel value="symbols">
+        <SymbolNavigation />
+      </Tabs.Panel>
+      <Tabs.Panel value="scopes">
+        <ScopeNavigation />
+      </Tabs.Panel>
+    </Tabs>
   );
 }
 
