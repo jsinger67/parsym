@@ -2,9 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import TabSwitcher from "../TabSwitcher/TabSwitcher";
 import ErrorPage from "../ErrorPage/ErrorPage";
 
-export interface TabAreaProps {}
+export interface TabRoutesProps {}
 
-function TabArea(_props: TabAreaProps) {
+function TabRoutes(_props: TabRoutesProps) {
   return (
     <Routes>
       <Route path="/" errorElement={<ErrorPage />}>
@@ -18,4 +18,4 @@ function TabArea(_props: TabAreaProps) {
   );
 }
 
-export default TabArea;
+export default TabRoutes;
