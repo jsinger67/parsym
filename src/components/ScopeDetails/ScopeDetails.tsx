@@ -5,6 +5,12 @@ import { Symbol } from "../../symbol-table/Symbol";
 import { Type } from "../../symbol-table/Type";
 import { getSymbolName } from "../SymbolDetails/SymbolDetails";
 import classes from "./ScopeDetails.module.css";
+import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import { SymbolTableContext } from "../App/App";
+import { Text, Space, Divider, Grid } from "@mantine/core";
+import ScopeLink from "../ScopeLink/ScopeLink";
+import SymbolLink from "../SymbolLink/SymbolLink";
 
 export interface ScopeDetailsProps {}
 
@@ -23,50 +29,107 @@ const getScopeCreatingSymbol = (
   return symbol;
 };
 
-export const getScopeName = (
-  scope: Scope,
-  symbolTable: SymbolTable,
-  withSymbolNumber: boolean
-) => {
-  let name = "<Global>";
-  let scope_creating_symbol = getScopeCreatingSymbol(scope.my_id, symbolTable);
-  if (scope_creating_symbol !== undefined) {
-    name = `"${getSymbolName(scope_creating_symbol, symbolTable)}"`;
-    if (withSymbolNumber) {
-      name = `#${scope_creating_symbol.my_id} ` + name;
-    }
+export const getScopeName = (scope: Scope, symbolTable: SymbolTable) => {
+  let scopeName = "<Global>";
+  let scopeCreatingSymbol = getScopeCreatingSymbol(scope.my_id, symbolTable);
+  if (scopeCreatingSymbol !== undefined) {
+    scopeName = `'${getSymbolName(scopeCreatingSymbol, symbolTable)}'`;
   }
-  return name;
+  return { scopeName, scopeCreatingSymbol };
 };
 
 export const getParentName = (
-  parent: number | null,
-  symbolTable: SymbolTable,
-  withParentSymbolNumber: boolean
+  parent: ScopeId | null,
+  symbolTable: SymbolTable
 ) => {
-  let parent_name = "-";
+  let parentName = "-";
+  let parentScopeCreatingSymbol = undefined;
   if (parent !== null) {
-    let parent_scope_creating_symbol = getScopeCreatingSymbol(
-      parent,
-      symbolTable
-    );
-    if (parent_scope_creating_symbol !== undefined) {
-      parent_name = `"${getSymbolName(
-        parent_scope_creating_symbol,
-        symbolTable
-      )}"`;
-      if (withParentSymbolNumber) {
-        parent_name = `#${parent_scope_creating_symbol.my_id} ` + parent_name;
-      }
+    parentScopeCreatingSymbol = getScopeCreatingSymbol(parent, symbolTable);
+    if (parentScopeCreatingSymbol !== undefined) {
+      parentName = `'${getSymbolName(parentScopeCreatingSymbol, symbolTable)}'`;
     }
   }
-  return parent_name;
+  return { parentName, parentScopeCreatingSymbol };
 };
 
 function ScopeDetails(_props: ScopeDetailsProps) {
+  const scopeId = (() => {
+    const { scopeId } = useParams<{ scopeId: string }>();
+    if (!scopeId) {
+      return 0;
+    }
+    return parseInt(scopeId);
+  })();
+  console.log(`Scope ID: ${scopeId}`);
+  const symbolTable = useContext(SymbolTableContext);
+  const scope = symbolTable.scopes[scopeId];
+  if (!scope) {
+    return <div data-testid="ScopeDetails"></div>;
+  }
+  const parent: number | null = scope.parent;
+  const { parentName, parentScopeCreatingSymbol } = getParentName(
+    parent,
+    symbolTable
+  );
+  const { scopeName, scopeCreatingSymbol } = getScopeName(scope, symbolTable);
+
   return (
     <div className={classes.ScopeDetails} data-testid="ScopeDetails">
-      ScopeDetails Component
+      <Text fw={700} td="underline">
+        Details of Scope {scope.my_id}
+      </Text>
+      <Space h="md" />
+      <Text>
+        {scopeCreatingSymbol ? (
+          <>
+            <SymbolLink symbolId={scopeCreatingSymbol.my_id} /> -
+          </>
+        ) : null}
+        {scopeName}
+      </Text>
+      {typeof parent === "number" && (
+        <Text>
+          Parent: <ScopeLink scopeId={parent} /> (
+          {parentScopeCreatingSymbol ? (
+            <>
+              <SymbolLink symbolId={parentScopeCreatingSymbol.my_id} /> -
+            </>
+          ) : null}
+          {parentName} )
+        </Text>
+      )}
+      {typeof parent === "string" && <Text>{parent}</Text>}
+      <Space h="md" />
+      <Divider />
+      <Space h="sm" />
+      <Text fw={700} td="underline">
+        Member Symbols
+      </Text>
+      <Space h="md" />
+      <Grid className="boxed" columns={2} justify="left">
+        {scope.symbols.map((symbol) => {
+          if (symbol >= symbolTable.symbols.length) {
+            return (
+              <>
+                <Text>Symbol {symbol} not found in symbol table</Text>
+              </>
+            );
+          }
+          const sym = symbolTable.symbols[symbol];
+          const local_name_id = sym.name_id[1];
+          return (
+            <>
+              <Grid.Col className="boxed" span={1} key={`ID${sym.my_id}`}>
+                <SymbolLink symbolId={sym.my_id} />
+              </Grid.Col>
+              <Grid.Col className="boxed" span={1} key={`Name${sym.my_id}`}>
+                '{scope.names[local_name_id] || "<Unnamed>"}'
+              </Grid.Col>
+            </>
+          );
+        })}
+      </Grid>{" "}
     </div>
   );
 }
