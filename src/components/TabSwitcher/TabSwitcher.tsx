@@ -3,7 +3,7 @@ import classes from "./TabSwitcher.module.css";
 import { Tabs } from "@mantine/core";
 import SymbolNavigation from "../SymbolNavigation/SymbolNavigation";
 import ScopeNavigation from "../ScopeNavigation/ScopeNavigation";
-import { IconCircle, IconCircleDot } from "@tabler/icons-react";
+import { IconBraces, IconListLetters } from "@tabler/icons-react";
 
 export interface TabSwitcherProps {}
 
@@ -20,10 +20,10 @@ function TabSwitcher(_props: TabSwitcherProps) {
       onChange={(value) => navigate(`/tabs/${value}`)}
     >
       <Tabs.List>
-        <Tabs.Tab value="symbols" leftSection={<IconCircleDot size={16} />}>
+        <Tabs.Tab value="symbols" leftSection={<IconListLetters size={16} />}>
           Symbols
         </Tabs.Tab>
-        <Tabs.Tab value="scopes" leftSection={<IconCircle size={16} />}>
+        <Tabs.Tab value="scopes" leftSection={<IconBraces size={16} />}>
           Scopes
         </Tabs.Tab>
       </Tabs.List>
