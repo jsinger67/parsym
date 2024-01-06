@@ -7,7 +7,7 @@ import {
   localStorageColorSchemeManager,
   MantineProvider,
 } from "@mantine/core";
-import { App } from "./components/App";
+import App from "./components/App/App";
 
 const theme = createTheme({
   /** Your theme override here */

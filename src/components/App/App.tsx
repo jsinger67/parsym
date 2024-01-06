@@ -1,4 +1,3 @@
-import "@mantine/core/styles.css";
 import classes from "./App.module.css";
 
 import { AppShell, Burger } from "@mantine/core";
@@ -8,6 +7,7 @@ import { SymbolTable } from "../../symbol-table/SymbolTable";
 import { createContext, useState } from "react";
 import DetailsRoutes from "../DetailsRoutes/DetailsRoutes";
 import TabSwitcher from "../TabSwitcher/TabSwitcher";
+import Footer from "../Footer/Footer";
 
 export const SymbolTableContext = createContext({
   symbols: [],
@@ -36,7 +36,7 @@ function App() {
         className={classes.App}
         data-testid="App"
         header={{ height: 60 }}
-        footer={{ height: 60 }}
+        footer={{ height: 30 }}
         navbar={{
           width: 300,
           breakpoint: "sm",
@@ -61,7 +61,9 @@ function App() {
         <AppShell.Main>
           <DetailsRoutes />
         </AppShell.Main>
-        <AppShell.Footer>Footer</AppShell.Footer>
+        <AppShell.Footer>
+          <Footer />
+        </AppShell.Footer>
       </AppShell>
     </SymbolTableContext.Provider>
   );

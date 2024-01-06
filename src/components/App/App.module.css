@@ -4,3 +4,7 @@
 .mantine-AppShell-navbar {
   overflow: scroll;
 }
+
+.mantine-AppShell-header {
+  margin: 5;
+}

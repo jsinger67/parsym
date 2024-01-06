@@ -1,17 +1,30 @@
 .Header {
-  margin: 5;
+  /* margin: 5; */
 }
 
 .Group {
-  margin: 5;
+  /* margin: 5; */
 }
 
 .InnerGroup {
-  margin: 5;
+  /* margin: 5; */
 }
 
 .Title {
   font-size: calc(10px + 2vmin);
-  color: white;
-  margin-left: 50;
+}
+
+.FileName {
+  font-size: calc(10px + 2vmin);
+}
+
+.Title,
+.FileName {
+  @mixin light {
+    color: var(--mantine-color-blue-6);
+  }
+
+  @mixin dark {
+    color: var(--mantine-color-blue-4);
+  }
 }

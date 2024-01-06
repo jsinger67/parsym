@@ -1,7 +1,8 @@
+import "@mantine/core/styles.css";
 import classes from "./Header.module.css";
 import { invoke } from "@tauri-apps/api";
 import ColorSchemeToggle from "../ColorSchemeToggle/ColorSchemeToggle";
-import { Button, FileButton, Group, Text } from "@mantine/core";
+import { Button, FileButton, Group, Text, Title } from "@mantine/core";
 import { SymbolTable } from "../../symbol-table/SymbolTable";
 import { useEffect, useState } from "react";
 
@@ -48,9 +49,11 @@ function Header(props: HeaderProps) {
         <FileButton onChange={setFile} accept=".par">
           {(props) => <Button {...props}>Choose grammar</Button>}
         </FileButton>
-        <Text className={classes.Title}>Parol Symbols Viewer</Text>
+        <Title className={classes.Title} lineClamp={1}>
+          Parol Symbols Viewer
+        </Title>
       </Group>
-      {file && <Text>{file.name}</Text>}
+      {file && <Text className={classes.FileName}>{file.name}</Text>}
       <ColorSchemeToggle />
     </Group>
   );

@@ -1,0 +1,16 @@
+.Footer {
+  padding: calc(var(--mantine-spacing-xs) / 2);
+  font-size: var(--mantine-font-size-xs);
+  @mixin light {
+    color: var(--mantine-color-blue-6);
+  }
+
+  @mixin dark {
+    color: var(--mantine-color-blue-4);
+  }
+}
+
+.Link {
+  margin-left: 10px;
+  text-decoration: underline;
+}
