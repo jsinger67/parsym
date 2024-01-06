@@ -1,3 +1,9 @@
 .ScopeNavigation {
-  overflow-y: scroll;
+  overflow: auto;
+  height: 80cqh;
+}
+
+.NavLink {
+  display: block;
+  margin: 0;
 }
