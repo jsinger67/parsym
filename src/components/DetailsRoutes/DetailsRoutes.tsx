@@ -3,9 +3,9 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import SymbolDetails from "../SymbolDetails/SymbolDetails";
 import ScopeDetails from "../ScopeDetails/ScopeDetails";
 
-export interface RouterSwitcherProps {}
+export interface DetailsRoutesProps {}
 
-function RouterSwitcher(_props: RouterSwitcherProps) {
+function DetailsRoutes(_props: DetailsRoutesProps) {
   return (
     <Routes>
       <Route path="/" errorElement={<ErrorPage />}>
@@ -25,4 +25,4 @@ function RouterSwitcher(_props: RouterSwitcherProps) {
   );
 }
 
-export default RouterSwitcher;
+export default DetailsRoutes;

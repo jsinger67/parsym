@@ -2,18 +2,18 @@ import { BrowserRouter } from "react-router-dom";
 import setupTests from "../../setupTests";
 import { render } from "../../test-utils";
 
-import RouterSwitcher from "./RouterSwitcher";
+import DetailsRoutes from "./DetailsRoutes";
 
-describe("<RouterSwitcher />", () => {
+describe("<DetailsRoutes />", () => {
   beforeAll(() => setupTests());
   test("it should mount", () => {
     render(
       <BrowserRouter>
-        <RouterSwitcher />
+        <DetailsRoutes />
       </BrowserRouter>
     );
 
-    // const routerSwitcher = screen.getByTestId("RouterSwitcher");
+    // const routerSwitcher = screen.getByTestId("DetailsRoutes");
     // expect(routerSwitcher).not.toBeNull();
     // TODO: Add router tests
   });

@@ -6,7 +6,7 @@ import { useDisclosure } from "@mantine/hooks";
 import Header from "../Header/Header";
 import { SymbolTable } from "../../symbol-table/SymbolTable";
 import { createContext, useState } from "react";
-import RouterSwitcher from "../RouterSwitcher/RouterSwitcher";
+import DetailsRoutes from "../DetailsRoutes/DetailsRoutes";
 import TabSwitcher from "../TabSwitcher/TabSwitcher";
 
 export const SymbolTableContext = createContext({
@@ -59,7 +59,7 @@ function App() {
         </AppShell.Navbar>
 
         <AppShell.Main>
-          <RouterSwitcher />
+          <DetailsRoutes />
         </AppShell.Main>
         <AppShell.Footer>Footer</AppShell.Footer>
       </AppShell>
