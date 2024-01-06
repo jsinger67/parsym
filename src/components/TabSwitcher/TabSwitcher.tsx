@@ -16,6 +16,7 @@ function TabSwitcher(_props: TabSwitcherProps) {
       className={classes.TabSwitcher}
       data-testid="TabSwitcher"
       value={tabValue}
+      defaultValue="symbols"
       onChange={(value) => navigate(`/tabs/${value}`)}
     >
       <Tabs.List>
