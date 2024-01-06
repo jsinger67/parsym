@@ -20,8 +20,14 @@ function ScopeNavigation(_props: ScopeNavigationProps) {
     >
       {symbolTable.scopes.map((scope, index) => {
         let parent: number | null = scope.parent;
-        let parentName = getParentName(parent, symbolTable, false);
-        let scopeName = getScopeName(scope, symbolTable, false);
+        let { parentName } = getParentName(parent, symbolTable);
+        let { scopeName } = getScopeName(scope, symbolTable);
+        let label;
+        if (parentName === "-") {
+          label = `${scope.my_id} - ${scopeName}`;
+        } else {
+          label = `${scope.my_id} - ${scopeName}   (parent: ${parentName})`;
+        }
 
         return (
           <NavLink
@@ -32,7 +38,7 @@ function ScopeNavigation(_props: ScopeNavigationProps) {
               setActive(index);
               navigate(`/scopes/${scope.my_id}`);
             }}
-            label={`${scope.my_id} - ${scopeName} parent: (${parentName})`}
+            label={`${label}`}
             variant="filled"
           ></NavLink>
         );
