@@ -1,13 +1,8 @@
-.Header {
-  /* margin: 5; */
-}
-
 .Group {
-  /* margin: 5; */
+  padding: calc(var(--mantine-spacing-xs) / 2);
 }
 
 .InnerGroup {
-  /* margin: 5; */
 }
 
 .Title {
