@@ -1,5 +1,6 @@
 .SymbolNavigation {
-  overflow-y: scroll;
+  overflow: auto;
+  height: 80cqh;
 }
 
 .NavLink {
