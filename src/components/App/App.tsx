@@ -38,7 +38,7 @@ function App() {
         header={{ height: 60 }}
         footer={{ height: 30 }}
         navbar={{
-          width: 300,
+          width: "max(400px, 25%)",
           breakpoint: "sm",
           collapsed: { mobile: !opened },
         }}
