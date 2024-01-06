@@ -1,2 +1,6 @@
 .App {
 }
+
+.mantine-AppShell-navbar {
+  overflow: scroll;
+}

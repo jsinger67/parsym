@@ -2,19 +2,19 @@ import { BrowserRouter } from "react-router-dom";
 import setupTests from "../../setupTests";
 import { render } from "../../test-utils";
 
-import RouterSwitcher from "./RouterSwitcher";
+import TabArea from "./TabArea";
 
-describe("<RouterSwitcher />", () => {
+describe("<TabArea />", () => {
   beforeAll(() => setupTests());
   test("it should mount", () => {
     render(
       <BrowserRouter>
-        <RouterSwitcher />
+        <TabArea />
       </BrowserRouter>
     );
 
-    // const routerSwitcher = screen.getByTestId("RouterSwitcher");
-    // expect(routerSwitcher).not.toBeNull();
+    // const tabArea = screen.getByTestId("TabArea");
+    // expect(tabArea).not.toBeNull();
     // TODO: Add router tests
   });
 });

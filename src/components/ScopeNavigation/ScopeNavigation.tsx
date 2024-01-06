@@ -25,7 +25,7 @@ function ScopeNavigation(_props: ScopeNavigationProps) {
           <NavLink
             className={classes.NavLink}
             key={scope.my_id}
-            onClick={() => navigate(`/symbols/${scope.my_id}`)}
+            onClick={() => navigate(`/scopes/${scope.my_id}`)}
             label={`${scope.my_id} - ${scopeName} parent: (${parentName})`}
           ></NavLink>
         );
