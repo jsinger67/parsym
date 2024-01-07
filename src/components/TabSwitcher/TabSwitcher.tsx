@@ -20,10 +20,10 @@ function TabSwitcher(_props: TabSwitcherProps) {
       onChange={(value) => navigate(`/tabs/${value}`)}
     >
       <Tabs.List>
-        <Tabs.Tab value="symbols" leftSection={<IconListLetters size={20} />}>
+        <Tabs.Tab value="symbols" leftSection={<IconListLetters size={24} />}>
           Symbols
         </Tabs.Tab>
-        <Tabs.Tab value="scopes" leftSection={<IconBraces size={20} />}>
+        <Tabs.Tab value="scopes" leftSection={<IconBraces size={24} />}>
           Scopes
         </Tabs.Tab>
       </Tabs.List>

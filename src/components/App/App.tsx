@@ -1,6 +1,10 @@
 import classes from "./App.module.css";
-
-import { AppShell, Burger } from "@mantine/core";
+import {
+  AppShell,
+  Burger,
+  useComputedColorScheme,
+  useMantineColorScheme,
+} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Header from "../Header/Header";
 import { SymbolTable } from "../../symbol-table/SymbolTable";
@@ -30,6 +34,9 @@ function App() {
     `Number of symbols in Symbol Table: ${symbolTable.symbols.length}`
   );
 
+  const { colorScheme } = useMantineColorScheme();
+  const computedColorScheme: string = useComputedColorScheme("dark");
+
   return (
     <SymbolTableContext.Provider value={symbolTable}>
       <AppShell
@@ -43,8 +50,21 @@ function App() {
           collapsed: { mobile: !opened },
         }}
         padding="md"
+        style={{
+          backgroundColor:
+            computedColorScheme === "dark"
+              ? "var(--mantine-color-dark-9)"
+              : "var(--mantine-color-light-3)",
+        }}
       >
-        <AppShell.Header>
+        <AppShell.Header
+          style={{
+            backgroundColor:
+              computedColorScheme === "dark"
+                ? "var(--mantine-color-dark-9)"
+                : "var(--mantine-color-light-3)",
+          }}
+        >
           <Burger
             opened={opened}
             onClick={handlers.toggle}
@@ -54,14 +74,29 @@ function App() {
           <Header setSymbolTable={setSymbolTable} />
         </AppShell.Header>
 
-        <AppShell.Navbar p="md">
+        <AppShell.Navbar
+          p="md"
+          style={{
+            backgroundColor:
+              computedColorScheme === "dark"
+                ? "var(--mantine-color-dark-9)"
+                : "var(--mantine-color-light-3)",
+          }}
+        >
           <TabSwitcher />
         </AppShell.Navbar>
 
         <AppShell.Main>
           <DetailsRoutes />
         </AppShell.Main>
-        <AppShell.Footer>
+        <AppShell.Footer
+          style={{
+            backgroundColor:
+              computedColorScheme === "dark"
+                ? "var(--mantine-color-dark-9)"
+                : "var(--mantine-color-light-3)",
+          }}
+        >
           <Footer />
         </AppShell.Footer>
       </AppShell>

@@ -7,7 +7,8 @@ import { useContext } from "react";
 import { SymbolTableContext } from "../App/App";
 import { Text, Space } from "@mantine/core";
 import { useParams } from "react-router-dom";
-import SymbolLink from "../SymbolLink/SymbolLink";
+import InstanceDetails from "../InstanceDetails/InstanceDetails";
+import TypeDetails from "../TypeDetails/TypeDetails";
 
 const getScopeByID = (scope_id: ScopeId, symbolTable: SymbolTable): Scope => {
   const scope = symbolTable.scopes.find((scope) => scope.my_id === scope_id)!;
@@ -37,17 +38,24 @@ function SymbolDetails() {
   if (!symbol) {
     return <div data-testid="SymbolDetails"></div>;
   }
-  const name = getSymbolName(symbol, symbolTable);
+  const symbolName = getSymbolName(symbol, symbolTable);
+
+  let component = null;
+  if ("Instance" in symbol.kind) {
+    component = <InstanceDetails instanceSymbol={symbol.kind.Instance} />;
+  } else if ("Type" in symbol.kind) {
+    component = <TypeDetails typeSymbol={symbol.kind.Type} />;
+  } else {
+    component = <div>Unknown symbol kind: {symbol.kind}</div>;
+  }
 
   return (
     <div className={classes.SymbolDetails} data-testid="SymbolDetails">
       <Text fw={700} td="underline">
-        Symbol Details
+        Details of Symbol {symbolId} - '{symbolName}'
       </Text>
       <Space h="md" />
-      <Text>
-        <SymbolLink symbolId={symbolId} /> {name}
-      </Text>
+      {component}
     </div>
   );
 }

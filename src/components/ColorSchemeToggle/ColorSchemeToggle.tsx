@@ -23,6 +23,12 @@ function ColorSchemeToggle() {
       variant="default"
       size="xl"
       aria-label="Toggle color scheme"
+      style={{
+        backgroundColor:
+          computedColorScheme === "dark"
+            ? "var(--mantine-color-dark-9)"
+            : "var(--mantine-color-light-3)",
+      }}
     >
       <IconSun className={cx(classes.icon, classes.light)} stroke={1.5} />
       <IconMoon className={cx(classes.icon, classes.dark)} stroke={1.5} />
