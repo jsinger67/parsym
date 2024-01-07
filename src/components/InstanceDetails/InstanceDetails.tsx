@@ -14,7 +14,10 @@ export interface InstanceDetailsProps {
   instanceSymbol: Instance;
 }
 
-const getScopeByID = (scope_id: ScopeId, symbolTable: SymbolTable): Scope => {
+export const getScopeByID = (
+  scope_id: ScopeId,
+  symbolTable: SymbolTable
+): Scope => {
   const scope = symbolTable.scopes.find((scope) => scope.my_id === scope_id)!;
   return scope;
 };
