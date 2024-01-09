@@ -54,6 +54,7 @@ function SymbolDetails() {
       <Text fw={700} td="underline">
         Details of Symbol {symbolId} - '{symbolName}'
       </Text>
+      <Text>Has {symbol.has_lifetime ? " " : "no "}lifetime parameter</Text>
       <Space h="md" />
       {component}
     </div>
