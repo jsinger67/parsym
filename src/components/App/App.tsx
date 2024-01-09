@@ -1,10 +1,5 @@
 import classes from "./App.module.css";
-import {
-  AppShell,
-  Burger,
-  useComputedColorScheme,
-  useMantineColorScheme,
-} from "@mantine/core";
+import { AppShell, Burger, useComputedColorScheme } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Header from "../Header/Header";
 import { SymbolTable } from "../../symbol-table/SymbolTable";
@@ -34,7 +29,6 @@ function App() {
     `Number of symbols in Symbol Table: ${symbolTable.symbols.length}`
   );
 
-  const { colorScheme } = useMantineColorScheme();
   const computedColorScheme: string = useComputedColorScheme("dark");
 
   return (
