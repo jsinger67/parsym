@@ -107,7 +107,7 @@ function ScopeDetails(_props: ScopeDetailsProps) {
         Member Symbols
       </Text>
       <Space h="md" />
-      <Grid className="boxed" columns={2} justify="left">
+      <Grid columns={2} justify="left">
         {scope.symbols.map((symbol) => {
           if (symbol >= symbolTable.symbols.length) {
             return (
@@ -120,10 +120,18 @@ function ScopeDetails(_props: ScopeDetailsProps) {
           const local_name_id = sym.name_id[1];
           return (
             <>
-              <Grid.Col className="boxed" span={1} key={`ID${sym.my_id}`}>
+              <Grid.Col
+                className={classes.Grid}
+                span={1}
+                key={`ID${sym.my_id}`}
+              >
                 <SymbolLink symbolId={sym.my_id} />
               </Grid.Col>
-              <Grid.Col className="boxed" span={1} key={`Name${sym.my_id}`}>
+              <Grid.Col
+                className={classes.Grid}
+                span={1}
+                key={`Name${sym.my_id}`}
+              >
                 '{scope.names[local_name_id] || "<Unnamed>"}'
               </Grid.Col>
             </>

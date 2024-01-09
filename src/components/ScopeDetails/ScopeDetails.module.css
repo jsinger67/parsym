@@ -1,1 +1,8 @@
-.ScopeDetails {}
+.ScopeDetails {
+}
+
+.Grid {
+  border: #282c34;
+  border-width: 1px;
+  border-style: solid;
+}
