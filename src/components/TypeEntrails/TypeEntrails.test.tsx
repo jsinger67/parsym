@@ -6,7 +6,7 @@ import TypeEntrails from "./TypeEntrails";
 describe("<TypeEntrails />", () => {
   beforeAll(() => setupTests());
   test("it should mount", () => {
-    render(<TypeEntrails />);
+    render(<TypeEntrails entrails={"None"} />);
 
     const typeEntrails = screen.getByTestId("TypeEntrails");
 
