@@ -25,6 +25,7 @@ async fn get_symbol_table(file_name: String, content: String) -> Result<String, 
     grammar_config.update_cfg(cfg);
 
     let mut type_info = GrammarTypeInfo::try_new(&grammar_name)?;
+    type_info.minimize_boxed_types();
     type_info.build(&grammar_config)?;
     type_info.set_auto_generate(true)?;
     let json = serde_json::to_string(type_info.symbol_table())?;

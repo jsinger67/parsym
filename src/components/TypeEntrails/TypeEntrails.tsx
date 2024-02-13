@@ -32,8 +32,7 @@ function TypeEntrails(props: TypeEntrailsProps) {
           </Text>
           <Space h="sm"></Space>
           <Text>
-            {entrails.Ref[1] ? "Mutable" : ""} Ref of type{" "}
-            <SymbolLink symbolId={entrails.Ref[0]}></SymbolLink>
+            Ref of type <SymbolLink symbolId={entrails.Ref}></SymbolLink>
           </Text>
         </>
       );

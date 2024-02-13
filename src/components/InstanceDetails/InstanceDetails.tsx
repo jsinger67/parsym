@@ -46,8 +46,6 @@ function InstanceDetails(props: InstanceDetailsProps) {
       </Text>
       <Text>"{instanceSymbol.description}"</Text>
       <Text>Semantic: {instanceSymbol.sem}</Text>
-      <Text>ReferenceKind: {instanceSymbol.entrails.ref_spec}</Text>
-      <Text>Mutability: {instanceSymbol.entrails.mutability}</Text>
       <Text>
         Type: <SymbolLink symbolId={instanceSymbol.type_id} /> '{type_name}'
       </Text>

@@ -16,7 +16,7 @@ tauri-build = { version = "1.5", features = [] }
 tauri = { version = "1.5", features = ["shell-open"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-parol = "0.26.0"
+parol = "0.26.1"
 anyhow = "1.0.75"
 
 [features]
