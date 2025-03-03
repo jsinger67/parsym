@@ -1,37 +1,34 @@
 import setupTests from "../../setupTests";
-import { SymbolTable } from "../../symbol-table/SymbolTable";
-import { screen } from "../../test-utils";
-import { render } from "@testing-library/react";
+// import { SymbolTable } from "../../symbol-table/SymbolTable";
 
-import InstanceDetails from "./InstanceDetails";
-import { MantineProvider } from "@mantine/core";
-import { createContext, useState } from "react";
+// import { MantineProvider } from "@mantine/core";
+// import { createContext } from "react";
 
-const SymbolTableContext = createContext({
-  symbols: [],
-  scopes: [],
-} as SymbolTable);
+// const SymbolTableContext = createContext({
+//   symbols: [],
+//   scopes: [],
+// } as SymbolTable);
 
-const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
-  const [symbolTable] = useState<SymbolTable>({
-    symbols: [
-      {
-        my_id: 0,
-        name_id: [0, 0],
-        kind: { Type: { entrails: "None", member_scope: 1 } },
-      },
-    ],
-    scopes: [
-      { parent: null, my_id: 0, names: [""] },
-      { parent: 0, my_id: 1, names: [""] },
-    ],
-  } as SymbolTable);
-  return (
-    <SymbolTableContext.Provider value={symbolTable}>
-      <MantineProvider>{children}</MantineProvider>
-    </SymbolTableContext.Provider>
-  );
-};
+// const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
+//   const [symbolTable] = useState<SymbolTable>({
+//     symbols: [
+//       {
+//         my_id: 0,
+//         name_id: [0, 0],
+//         kind: { Type: { entrails: "None", member_scope: 1 } },
+//       },
+//     ],
+//     scopes: [
+//       { parent: null, my_id: 0, names: [""] },
+//       { parent: 0, my_id: 1, names: [""] },
+//     ],
+//   } as SymbolTable);
+//   return (
+//     <SymbolTableContext.Provider value={symbolTable}>
+//       <MantineProvider>{children}</MantineProvider>
+//     </SymbolTableContext.Provider>
+//   );
+// };
 
 describe("<InstanceDetails />", () => {
   beforeAll(() => setupTests());

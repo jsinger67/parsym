@@ -3,9 +3,26 @@ import type { ScopedNameId } from "./ScopedNameId";
 import type { SymbolId } from "./SymbolId";
 import type { SymbolKind } from "./SymbolKind";
 
-export interface Symbol {
+/**
+ *
+ * A more general symbol used in the symbol table
+ *
+ */
+export type Symbol = {
+  /**
+   * The symbol's id in the symbol table
+   */
   my_id: SymbolId;
+  /**
+   * The symbol name's id in the enveloping scope
+   */
   name_id: ScopedNameId;
+  /**
+   * The symbol's interior
+   */
   kind: SymbolKind;
+  /**
+   * If a lifetime is present
+   */
   has_lifetime: boolean;
-}
+};

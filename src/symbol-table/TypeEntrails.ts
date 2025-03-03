@@ -4,6 +4,11 @@ import type { MetaSymbolKind } from "./MetaSymbolKind";
 import type { SymbolId } from "./SymbolId";
 import type { UserDefinedTypeName } from "./UserDefinedTypeName";
 
+/**
+ *
+ * Type information used for auto-generation
+ *
+ */
 export type TypeEntrails =
   | "None"
   | "Token"
